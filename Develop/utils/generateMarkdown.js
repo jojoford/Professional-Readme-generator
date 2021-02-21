@@ -1,24 +1,4 @@
-//  A function that returns a license badge based on which license is passed in
-/*const addBadge = licenseChoice => {
-  if (licenseChoice == 'Apache License 2.0') {
-    return `
-![apache](https://img.shields.io/badge/license-Apache%20License%202.0-blue)
-    `;
-  } else if (licenseChoice == 'GNU GPLv3') {
-    return `
-![gnu](https://img.shields.io/badge/license-GNU%20GPLv3-green)
-    `;
-  } else if (licenseChoice == 'ISC License') {
-    return `
-![isc](https://img.shields.io/badge/license-ISC%20License-purple)
-    `;
-  } else {
-    return `
-
-    `;
-  }
-}
-*/
+//  A function that returns a license badge based on which license is passed in 
 // If there is no license, return an empty string
 //function renderLicenseBadge(license) {}
 function renderLicenseBadge(license, color) {
@@ -33,30 +13,17 @@ function renderLicenseBadge(license, color) {
 }
 // Create a function that returns the license link
 // If there is no license, return an empty string
-//function renderLicenseLink(license) {}
-/*const checkLicense = licenseChoice => {
-  if (licenseChoice == 'Apache License 2.0') {
-    return `
-This application is covered by the Apache v2.0 License, the terms of which can be found [here](https://www.apache.org/licenses/LICENSE-2.0.txt).
-    `;
-  } else if (licenseChoice == 'GNU GPLv3') {
-    return `
-This application is covered by the GNU General Purpose License, the terms of which can be found [here](https://www.gnu.org/licenses/gpl-3.0.en.html).
-    `;
-  } else if (licenseChoice == 'ISC License') {
-    return `
-This application is covered by the ISC License, the terms of which can be found [here](https://opensource.org/licenses/ISC).
-    `;
-  } else {
-    return `
+function renderLicenseLink(license) {
+  if (license === "None") {
+    return "";
 
-    `;
+  } else {
+    const queryString = license.split(" ").join("-");
+    return `https://opensource.org/licenses/${queryString}`;
   }
 }
-*/
-// Create a function that returns the license section of README
-// If there is no license, return an empty string
-//function renderLicenseSection(license) {}
+
+// function renderLicenseSection(license) {}
 function renderLicenseSection(license, link, name) {
   if (license === "None") {
     return "No license information available."
@@ -68,15 +35,7 @@ function renderLicenseSection(license, link, name) {
     `;
   }
 }
-function renderLicenseLink(license) {
-  if (license === "None") {
-    return "";
 
-  } else {
-    const queryString = license.split(" ").join("-");
-    return `https://opensource.org/licenses/${queryString}`;
-  }
-}
 // function to generate markdown for README
 
   const generateMarkdown = (data) => {
@@ -92,7 +51,7 @@ function renderLicenseLink(license) {
   if (data.license === "None") optionalBadge = "";
   else optionalBadge = licenseBadge;
     
-    //instead of function generateMarkdown(data) {${addBadge(data.license)}
+  //instead of function generateMarkdown(data) {${addBadge(data.license)}
   return
     `# ${data.title}
      ${optionalBadge}
@@ -124,3 +83,49 @@ function renderLicenseLink(license) {
 }
 
 module.exports = generateMarkdown;
+
+
+
+//trail and error notes
+
+/*const addBadge = licenseChoice => {
+  if (licenseChoice == 'Apache License 2.0') {
+    return `
+![apache](https://img.shields.io/badge/license-Apache%20License%202.0-blue)
+    `;
+  } else if (licenseChoice == 'GNU GPLv3') {
+    return `
+![gnu](https://img.shields.io/badge/license-GNU%20GPLv3-green)
+    `;
+  } else if (licenseChoice == 'ISC License') {
+    return `
+![isc](https://img.shields.io/badge/license-ISC%20License-purple)
+    `;
+  } else {
+    return `
+
+    `;
+  }
+}
+*/
+// alt to function renderLicenseLink(license) {}
+/*const checkLicense = licenseChoice => {
+  if (licenseChoice == 'Apache License 2.0') {
+    return `
+This application is covered by the Apache v2.0 License, the terms of which can be found [here](https://www.apache.org/licenses/LICENSE-2.0.txt).
+    `;
+  } else if (licenseChoice == 'GNU GPLv3') {
+    return `
+This application is covered by the GNU General Purpose License, the terms of which can be found [here](https://www.gnu.org/licenses/gpl-3.0.en.html).
+    `;
+  } else if (licenseChoice == 'ISC License') {
+    return `
+This application is covered by the ISC License, the terms of which can be found [here](https://opensource.org/licenses/ISC).
+    `;
+  } else {
+    return `
+
+    `;
+  }
+}
+*/
