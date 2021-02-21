@@ -1,13 +1,13 @@
 //  A function that returns a license badge based on which license is passed in 
 // If there is no license, return an empty string
 //function renderLicenseBadge(license) {}
-function renderLicenseBadge(license, color) {
+function renderLicenseBadge(license) {
   if (license === "None") {
     return "";
 
   } else {
     const formatLicense = license.split(" ").join("+");
-    const badge = `https://img.shields.io/static/v1?label=license&message=${formatLicense}&color=${color}`;
+    const badge = `https://img.shields.io/static/v1?label=license&message=${formatLicense}`;
     return badge;
   }
 }
