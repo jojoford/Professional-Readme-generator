@@ -120,8 +120,22 @@ const promptUser = () => {
     return inquirer.prompt(questions);
 }
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+//A function to write README file
+function writeToFile(data) {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/README.md', data, err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'Readme file created!'
+            })
+        })
+    })
+}
+
 
 // TODO: Create a function to initialize app
 function init() {}
