@@ -137,8 +137,23 @@ function writeToFile(data) {
 }
 
 
-// TODO: Create a function to initialize app
-function init() {}
+// A function to initialize app
+function init() {
+    promptUser()
+        .then(questions => {
+            return generateReadme(questions);
+        })
+        .then(formattedPage => {
+            return writeToFile(formattedPage);
+        })
+        .then(writeFileResponse => {
+            console.log(writeFileResponse);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
+
 
 // Function call to initialize app
 init();
