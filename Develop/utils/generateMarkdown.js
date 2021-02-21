@@ -15,7 +15,7 @@ const addBadge = licenseChoice => {
     `;
   } else {
     return `
-![mit](https://img.shields.io/badge/license-MIT%20License-red)
+
     `;
   }
 }
