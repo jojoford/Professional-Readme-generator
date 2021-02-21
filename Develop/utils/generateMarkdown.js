@@ -62,7 +62,7 @@ function renderLicenseSection(license, link, name) {
     return "No license information available."
 
   } else {
-    return outdent`
+    return `
       Copyright (c)  ${name}  
       Licensed under the [${license} license](${link}).
     `;
