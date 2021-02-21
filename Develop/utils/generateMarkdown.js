@@ -26,7 +26,7 @@ function renderLicenseLink(license) {
 // function renderLicenseSection(license) {}
 function renderLicenseSection(license, link, name) {
   if (license === "None") {
-    return "No license information available."
+    return "None"
 
   } else {
     return `
