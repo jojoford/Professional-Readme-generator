@@ -22,10 +22,28 @@ const addBadge = licenseChoice => {
 // If there is no license, return an empty string
 //function renderLicenseBadge(license) {}
 
-// TODO: Create a function that returns the license link
+// Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+//function renderLicenseLink(license) {}
+const checkLicense = licenseChoice => {
+  if (licenseChoice == 'Apache License 2.0') {
+    return `
+This application is covered by the Apache v2.0 License, the terms of which can be found [here](https://www.apache.org/licenses/LICENSE-2.0.txt).
+    `;
+  } else if (licenseChoice == 'GNU GPLv3') {
+    return `
+This application is covered by the GNU General Purpose License, the terms of which can be found [here](https://www.gnu.org/licenses/gpl-3.0.en.html).
+    `;
+  } else if (licenseChoice == 'ISC License') {
+    return `
+This application is covered by the ISC License, the terms of which can be found [here](https://opensource.org/licenses/ISC).
+    `;
+  } else {
+    return `
 
+    `;
+  }
+}
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {}
