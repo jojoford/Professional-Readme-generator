@@ -5,7 +5,6 @@ const inquirer = require('inquirer');
 
 // Create an array of questions for user input
 const questions = [{
-       {
     name: "title",
     type: "input",
     message: `Name your application `
