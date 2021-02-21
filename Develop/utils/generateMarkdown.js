@@ -34,7 +34,7 @@ function renderLicenseBadge(license, color) {
 // Create a function that returns the license link
 // If there is no license, return an empty string
 //function renderLicenseLink(license) {}
-const checkLicense = licenseChoice => {
+/*const checkLicense = licenseChoice => {
   if (licenseChoice == 'Apache License 2.0') {
     return `
 This application is covered by the Apache v2.0 License, the terms of which can be found [here](https://www.apache.org/licenses/LICENSE-2.0.txt).
@@ -53,6 +53,7 @@ This application is covered by the ISC License, the terms of which can be found 
     `;
   }
 }
+*/
 // Create a function that returns the license section of README
 // If there is no license, return an empty string
 //function renderLicenseSection(license) {}
