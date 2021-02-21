@@ -28,15 +28,15 @@ const questions = [{
   {
     name: "Windows",
     type: "confirm",
-    message: `The application will use Notepad for questions that may require longer responses. 
+    message: `The application will use Notepad. Wfter you write your response in Notepad use 'Save As' then save.
     Are you ready to get started?`,
     when: answers => answers.os === "Windows"
   },
   {
     name: "Mac/Linux",
     type: "confirm",
-    message: `The application will use Vim for questions that may require longer responses. 
-    To use Vim, press "enter" to open the editor and "i" to start typing.
+    message: `The application will use Vim. 
+    Press "enter" to open the editor and "i" to start typing.
     When you're finished, press "esc" followed by ":wq" to save your answer and close Vim.
     Are you ready to get started?`,
     when: answers => answers.os === "Mac/Linux"
@@ -71,32 +71,32 @@ const questions = [{
   {
     name: "installation",
     type: "editor",
-    message: `How would a user install the application?
-    (Markdown is supported in the editor):`
+    message: `Describe install
+    (Markdown is supported):`
   },
   {
     name: "usage",
     type: "editor",
-    message: `Please provide instructions for how to use the application:
-    (Markdown is supported in the editor)`
+    message: `Please provide instructions:
+    (Markdown is supported)`
   },
   {
     name: "contributing",
     type: "editor",
-    message: `What are the guidelines for contributions to the project?
-    (Markdown is supported in the editor)`
+    message: `Write guidelines for contributions to the project.
+    (Markdown is supported)`
   },
   {
     name: "tests",
     type: "editor",
     message: `Describe the application's testing suites:
-    (Markdown is supported in the editor)`
+    (Markdown is supported)`
   },
   {
     name: "license",
     type: "list",
     choices: [ "Apache 2.0", "GPL 3.0", "GPL 2.0", "BSD 3 Clause", "None"],
-    message: "Select a license for your application:"
+    message: "Select a license or None"
   },
   {
     name: "badgeColor",
