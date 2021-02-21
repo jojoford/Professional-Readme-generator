@@ -86,32 +86,30 @@ function renderLicenseLink(license) {
     `# ${data.title}
      ${optionalBadge}
 
-## Description
-${data.description}
-
-## Table of Contents
-* [Description](#description)
-* [Installation](#installation)
-* [Usage](#usage)
-* [License](#license)
-* [Contributing](#contributing)
-* [Tests](#tests)
-* [Questions](#questions)
-
-## Installation
-${data.installation}
-## Usage
-${data.usage}
-## License
-${checkLicense(data.license)}
-## Contributing
-${data.contribution}
-## Tests
-${data.test}
-## Questions
-[GitHub Profile](https://github.com/${data.userName}/)  
-I can be reached at ${data.email}.
-`;
+ ## Description
+  ${data.description}
+  
+  ## Technologies
+  ${data.tech.join(", ")}
+  ## Installation
+  ${data.installation}
+  
+  ## Usage
+  ${data.usage}
+  
+  ## License
+  ${licenseMarkup}
+  
+  ## Contributing
+  ${data.contributing}
+  
+  ## Tests
+  ${data.tests}
+  
+  ## Questions  
+  See my Github [GitHub](https://www.github.com/${data.github})  
+  Email me  <${data.email}>
+  `;
 }
 
 module.exports = generateMarkdown;
