@@ -57,6 +57,17 @@ This application is covered by the ISC License, the terms of which can be found 
 // Create a function that returns the license section of README
 // If there is no license, return an empty string
 //function renderLicenseSection(license) {}
+function renderLicenseSection(license, link, name) {
+  if (license === "None") {
+    return "No license information available."
+
+  } else {
+    return outdent`
+      Copyright (c)  ${name}  
+      Licensed under the [${license} license](${link}).
+    `;
+  }
+}
 function renderLicenseLink(license) {
   if (license === "None") {
     return "";
