@@ -5,17 +5,10 @@ const inquirer = require('inquirer');
 
 // Create an array of questions for user input
 const questions = [{
-        type: 'input',
-        name: 'title',
-        message: 'Enter the project title: (REQUIRED)',
-        validate: titleInput => {
-            if (titleInput) {
-                return true;
-            } else {
-                console.log('Please enter a project title!');
-                return false;
-            }
-        }
+       {
+    name: "title",
+    type: "input",
+    message: `Name your application `
     },
     {
     name: "os",
@@ -65,7 +58,7 @@ const questions = [{
   {
     name: "tech",
     type: "checkbox",
-    choices: ["HTML", "CSS", "Bootstrap 4", "JavaScript", "jQuery", "React.js", "Node.js", "Express", "MySQL", "MongoDb"],
+    choices: ["HTML", "CSS", "Bootstrap 4", "JavaScript", "jQuery", "React.js", "Node.js"],
     message: "Select all technologies used in building the application:"
   },
   {
@@ -112,19 +105,11 @@ const promptUser = () => {
 }
 
 //A function to write README file
-function writeToFile(data) {
-    return new Promise((resolve, reject) => {
-        fs.writeFile('./dist/README.md', data, err => {
-            if (err) {
-                reject(err);
-                return;
-            }
-            resolve({
-                ok: true,
-                message: 'Readme file created!'
-            })
-        })
-    })
+function writeToFile(fileName, data) {
+  fs.writeFile(fileName, data, err => {
+    if (err) new Error(err);
+    console.log("README successfully created!");
+  });
 }
 
 
