@@ -1,6 +1,5 @@
 //  A function that returns a license badge based on which license is passed in
-
-const addBadge = licenseChoice => {
+/*const addBadge = licenseChoice => {
   if (licenseChoice == 'Apache License 2.0') {
     return `
 ![apache](https://img.shields.io/badge/license-Apache%20License%202.0-blue)
@@ -19,6 +18,7 @@ const addBadge = licenseChoice => {
     `;
   }
 }
+*/
 // If there is no license, return an empty string
 //function renderLicenseBadge(license) {}
 function renderLicenseBadge(license, color) {
@@ -66,11 +66,28 @@ function renderLicenseLink(license) {
   }
 }
 // function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
-${addBadge(data.license)}
+
+  const generateMarkdown = (data) => {
+  const { name, license, badgeColor: color } = data;
+
+  const badge = renderLicenseBadge(license, color);
+  const link = renderLicenseLink(license);
+  const licenseMarkup = renderLicenseSection(license, link, name);
+  const licenseBadge = `[![license](${badge})](${link})`;
+
+  let optionalBadge;
+
+  if (data.license === "None") optionalBadge = "";
+  else optionalBadge = licenseBadge;
+    
+    //instead of function generateMarkdown(data) {${addBadge(data.license)}
+  return
+    `# ${data.title}
+     ${optionalBadge}
+
 ## Description
 ${data.description}
+
 ## Table of Contents
 * [Description](#description)
 * [Installation](#installation)
@@ -79,6 +96,7 @@ ${data.description}
 * [Contributing](#contributing)
 * [Tests](#tests)
 * [Questions](#questions)
+
 ## Installation
 ${data.installation}
 ## Usage
