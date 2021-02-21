@@ -7,7 +7,7 @@ const inquirer = require('inquirer');
 const questions = [{
     name: "title",
     type: "input",
-    message: `Name your application `
+    message: `Give your application a title `
     },
     {
     name: "os",
@@ -89,13 +89,6 @@ const questions = [{
     type: "list",
     choices: [ "Apache 2.0", "GPL 3.0", "GPL 2.0", "BSD 3 Clause", "None"],
     message: "Select a license or None"
-  },
-  {
-    name: "badgeColor",
-    type: "list",
-    choices: ["brightgreen", "yellow", "red", "blue", "orange", "lightgray", "blueviolet"],
-    message: "Select a color for your license badge:",
-    when: answers => answers.license !== "None"
   }
 ];
 
