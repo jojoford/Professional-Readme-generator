@@ -8,7 +8,7 @@
     test
   
   ## Technologies
-     test
+     HTML, JavaScript, jQuery, Node.js
 
   ## Installation
   
