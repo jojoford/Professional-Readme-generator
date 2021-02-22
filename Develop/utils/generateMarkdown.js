@@ -1,66 +1,44 @@
 //  A function that returns a license badge based on which license is passed in 
 // If there is no license, return an empty string
-//function renderLicenseBadge(license) {}
+//function renderLicenseBadge(license); function renderLicenseLink(license) {}; and liscenceSection
 function renderLicenseBadge(license) {
-  if (license === "None") {
-    return "";
-
-  } else {
-    const formatLicense = license.split(" ").join("+");
-    const badge = `https://img.shields.io/static/v1?label=license&message=${formatLicense}`;
-    return badge;
+  if (license !== "None") {
+    return `![GitHub license](https://img.shields.io/badge/license-${license}-blue.svg)`
   }
+  return ""
+}function renderLicenseLink(license) {
+  if (license !== "None") {
+    return (
+      `\n* [License](#license)\n`
+    )
+  }
+  return ""
 }
-// Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {
-  if (license === "None") {
-    return "";
-
-  } else {
-    const queryString = license.split(" ").join("-");
-    return `https://opensource.org/licenses/${queryString}`;
+function renderLicenseSection(license) {
+  if (license !== "None") {
+    return (
+      `## License
+This project was developed under the ${license} license.`
+    )
   }
-}
-
-// function renderLicenseSection(license) {}
-function renderLicenseSection(license, link, name) {
-  if (license === "None") {
-    return "None"
-
-  } else {
-    return `
-      Copyright (c)  ${name}  
-      Licensed under the [${license} license](${link}).
-    `;
-  }
+  return ""
 }
 
-// function to generate markdown for README
+// Create a function to generate markdown for README
+function generateMarkdown(data) {
+  
+  return `# ${data.title}
+  
 
-  const generateMarkdown = (data) => {
-  const { name, license, badgeColor: color } = data;
-
-  const badge = renderLicenseBadge(license, color);
-  const link = renderLicenseLink(license);
-  const licenseMarkup = renderLicenseSection(license, link, name);
-  const licenseBadge = `[![license](${badge})](${link})`;
-
-  let optionalBadge;
-
-  if (data.license === "None") optionalBadge = "";
-  else optionalBadge = licenseBadge;
+   #  Project Title
+     ${data.title}
     
-  //instead of function generateMarkdown(data) {${addBadge(data.license)}
-  return
-    `# ${data.title}
-     ${optionalBadge}
-
- ## Description
-  ${data.description}
+  ##  Description
+    ${data.description}
   
   ## Technologies
   ${data.tech.join(", ")}
+
   ## Installation
   ${data.installation}
   
@@ -68,7 +46,10 @@ function renderLicenseSection(license, link, name) {
   ${data.usage}
   
   ## License
-  ${licenseMarkup}
+  ${data.license}
+  ${renderLicenseBadge(data.license)}
+  ${renderLicenseLink(data.license)}
+  ${renderLicenseSection(data.license)}
   
   ## Contributing
   ${data.contributing}
@@ -86,7 +67,7 @@ module.exports = generateMarkdown;
 
 
 
-//trail and error notes
+//trial and error notes
 
 /*const addBadge = licenseChoice => {
   if (licenseChoice == 'Apache License 2.0') {
