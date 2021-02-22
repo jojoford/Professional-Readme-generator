@@ -1,6 +1,8 @@
 // Include packages needed for this application
-const generateReadme = require('./utils/generateMarkdown');
+
 const fs = require('fs');
+const generateReadme = require('./utils/generateMarkdown');
+
 const inquirer = require('inquirer');
 
 // Create an array of questions for user input
@@ -85,43 +87,50 @@ const questions = [{
     (Markdown is supported)`
   },
   {
-    name: "license",
     type: "list",
-    choices: [ "Apache 2.0", "GPL 3.0", "GPL 2.0", "BSD 3 Clause", "None"],
-    message: "Select a license or None"
-  }
+    name: "license",
+    message: "Which license does your project have or should have?",
+    choices: ["MIT", "BSD", "Apache", "GPL", "ISC", "Public", "None"],
+  },
 ];
 
+// function to write README file
 const promptUser = () => {
-    return inquirer.prompt(questions);
+  return inquirer.prompt(questions);
 }
 
-//A function to write README file
-function writeToFile(fileName, data) {
-  fs.writeFile(fileName, data, err => {
-    if (err) new Error(err);
-    console.log("README successfully created!");
-  });
+// function to write README file
+function writeToFile(data) {
+  return new Promise((resolve, reject) => {
+      fs.writeFile('./output/README.md', data, err => {
+          if (err) {
+              reject(err);
+              return;
+          }
+          resolve({
+              ok: true,
+              message: 'Readme file created!'
+          })
+      })
+  })
 }
 
-
-// A function to initialize app
+// function to initialize program
 function init() {
-    promptUser()
-        .then(questions => {
-            return generateReadme(questions);
-        })
-        .then(formattedPage => {
-            return writeToFile(formattedPage);
-        })
-        .then(writeFileResponse => {
-            console.log(writeFileResponse);
-        })
-        .catch(err => {
-            console.log(err);
-        })
+  promptUser()
+      .then(questions => {
+          return generateReadme(questions);
+      })
+      .then(formattedPage => {
+          return writeToFile(formattedPage);
+      })
+      .then(writeFileResponse => {
+          console.log(writeFileResponse);
+      })
+      .catch(err => {
+          console.log(err);
+      })
 }
-
 
 // Function call to initialize app
 init();
